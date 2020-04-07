@@ -22,7 +22,7 @@ public class FilePartReader {
         }
     }
 
-    private ArrayList<String> read(String filePath) {
+    public ArrayList<String> read(String filePath) {
         try {
             File file = new File(filePath);
             Scanner reader = new Scanner(file);
