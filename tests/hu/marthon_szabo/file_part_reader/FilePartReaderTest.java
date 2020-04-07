@@ -1,23 +1,24 @@
 package hu.marthon_szabo.file_part_reader;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FilePartReaderTest {
-    FilePartReader filePartReader;
+@DisplayName(value = "FilePartReader Unit Test")
+public class FilePartReaderTest {
+    FilePartReader fpr = new FilePartReader();
 
-    @BeforeEach
-    void createClass() {
-        filePartReader = new FilePartReader();
+
+    @Test
+    public void setTest() {
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () ->
+                fpr.setup("src/main/resources/text.txt", 3, 1));
+        assertEquals("fromLine expected to be bigger than toLine!", exception.getMessage());
     }
 
-    @org.junit.jupiter.api.Test
-    @DisplayName("Setup test")
-    void setupTest() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () ->
-                filePartReader.setup("/main/resources/text.txt", 1, 0));
-        assertEquals("toLine expected to be bigger than fromLine", exception.getMessage());
+    @AfterEach
+    void tearDown() {
     }
 }
