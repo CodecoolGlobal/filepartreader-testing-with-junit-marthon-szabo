@@ -23,9 +23,7 @@ public class FilePartReaderTest {
 
     @Test
     public void readTest() {
-        IOException exception = assertThrows(IOException.class, () ->
-                fpr.read("/ra/a.xl"));
-        assertEquals(null, exception.getMessage());
+        assertEquals(null, fpr.read("/ra/a.xl"));
     }
 
     @AfterEach
