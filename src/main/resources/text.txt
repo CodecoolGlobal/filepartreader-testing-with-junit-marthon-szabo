@@ -1,0 +1,3 @@
+As you can see a lot of written text is present on those pages. The goal is to learn to make tests in JUnit. If you feel like it's not enough/not good enough material feel free to search for another sources.
+
+Another important goal is to know the basic terms used in Unit testing. So if you find any term what is new, check it out, search for it and understand it's meaning.
