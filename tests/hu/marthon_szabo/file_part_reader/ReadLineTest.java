@@ -16,6 +16,7 @@ class ReadLineTest {
     private int fromLine;
     private int toLine;
     private String expectedLine;
+    private String fileSource;
     private FilePartReader fpr;
 
     @Before
@@ -23,25 +24,26 @@ class ReadLineTest {
         fpr = new FilePartReader();
     }
 
-    public ReadLineTest(int fromLine, int toLine, String expectedLine) {
+    public ReadLineTest(int fromLine, int toLine, String expectedLine, String fileSource) {
         this.fromLine = fromLine;
         this.toLine = toLine;
         this.expectedLine = expectedLine;
+        this.fileSource = fileSource;
     }
 
     @Parameterized.Parameters
     public static Collection lines() {
         return Arrays.asList(new Object[][] {
-                {1, 1, "As you can see a lot of written text is present on those pages. " +
+                {1, 1, "[Line 1]: As you can see a lot of written text is present on those pages. " +
                         "The goal is to learn to make tests in JUnit. " +
                         "If you feel like it's not enough/not good enough " +
-                        "material feel free to search for another sources."}
+                        "material feel free to search for another sources.\n"}
         });
     }
 
     @Test
     public void readLineTest() {
         System.out.println("fromLine: " + fromLine + "toLine: " + toLine);
-        assertEquals(expectedLine, fpr.readLine(fromLine, toLine));
+        assertEquals(expectedLine, fpr.readLines(fileSource, fromLine, toLine));
     }
 }

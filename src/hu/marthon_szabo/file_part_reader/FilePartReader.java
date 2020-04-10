@@ -12,21 +12,15 @@ public class FilePartReader {
     public  void setup(String filePath, Integer fromLine, Integer toLine) {
         if (toLine < fromLine) throw new IllegalArgumentException ("fromLine expected to be bigger than toLine!");
 
-        ArrayList<String> lines = read(filePath);
-        ArrayList<String> linesToReturn = new ArrayList<>();
-
-        for (int i = fromLine - 1; i < toLine - 1; i++) {
-            linesToReturn.add(lines.get(i));
-        }
-
+        System.out.println(readLines(filePath, fromLine, toLine));
     }
 
     public String readLines(String filePath, int fromLine, int toLine) {
         ArrayList<String> allLines = read(filePath);
         StringBuilder myLines = new StringBuilder();
 
-        for (int i = fromLine; i <= toLine ; i++) {
-            myLines.append(String.format("%dth line: %s", i, allLines.get(i)));
+        for (int i = fromLine - 1; i <= toLine - 1 ; i++) {
+            myLines.append(String.format("[Line %d]: %s\n", i + 1, allLines.get(i)));
         }
 
         return myLines.toString();
