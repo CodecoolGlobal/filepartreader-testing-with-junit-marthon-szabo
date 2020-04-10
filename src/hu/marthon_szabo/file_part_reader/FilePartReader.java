@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FilePartReader {
+    private ArrayList<String> resource = new ArrayList<>();
+
     public  void setup(String filePath, Integer fromLine, Integer toLine) {
         if (toLine < fromLine) throw new IllegalArgumentException ("fromLine expected to be bigger than toLine!");
 
@@ -39,9 +41,12 @@ public class FilePartReader {
                 }
             }};
             reader.close();
+            resource = lines;
             return lines;
 
         } catch (Exception e) {}
         return null;
     }
+
+    public ArrayList<String> getResource() { return resource; }
 }
