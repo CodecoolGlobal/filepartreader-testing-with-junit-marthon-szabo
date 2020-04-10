@@ -9,12 +9,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class FilePartReader {
-    private ArrayList<String> resource = new ArrayList<>();
+    private String resource;
 
     public  void setup(String filePath, Integer fromLine, Integer toLine) {
         if (toLine < fromLine) throw new IllegalArgumentException ("fromLine expected to be bigger than toLine!");
-
-        System.out.println(readLines(filePath, fromLine, toLine));
+        read(filePath);
     }
 
     public String readLines(String filePath, int fromLine, int toLine) {
@@ -32,6 +31,11 @@ public class FilePartReader {
         try {
             File file = new File(filePath);
             Scanner reader = new Scanner(file);
+            StringBuilder linesAsResource = new StringBuilder();
+
+            while (reader.hasNextLine()) {
+                linesAsResource.append(reader.nextLine());
+            }
 
             ArrayList<String> lines = new ArrayList<String>() {{
                 while (reader.hasNextLine()) {
@@ -41,12 +45,12 @@ public class FilePartReader {
                 }
             }};
             reader.close();
-            resource = lines;
+            resource = linesAsResource.toString();
             return lines;
 
         } catch (Exception e) {}
         return null;
     }
 
-    public ArrayList<String> getResource() { return resource; }
+    public String getResource() { return resource; }
 }

@@ -6,23 +6,22 @@ import java.util.Arrays;
 
 public class FileWorldAnalyzer {
     private FilePartReader fpr;
-    private ArrayList<String> allLines = fpr.getResource();
+    private String allLines;
 
-    public FileWorldAnalyzer(FilePartReader fpr) {
+    public FileWorldAnalyzer(FilePartReader fpr, String resource) {
         this.fpr = fpr;
+        this.allLines = resource;
     }
 
     public String[] getWordsContainingSubstrings(String substring) {
+        String splitLines[] = allLines.split("[\\s,.]");
         ArrayList<String> myWords = new ArrayList<>();
-
-        allLines.forEach(line -> line.split(" "));
-
-        for (String word : allLines) {
-            if (word.equals(substring)) {
-                myWords.add(word);
+        for (int i = 0; i < splitLines.length; i++) {
+            if (splitLines[i].equals(substring)) {
+                myWords.add(splitLines[i]);
             }
         }
-        System.out.println(myWords);
+
         return (String[]) myWords.toArray();
 
     }

@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FileWorldAnalyzerTest {
     FilePartReader fpr = new FilePartReader();
-    FileWorldAnalyzer fwa = new FileWorldAnalyzer(fpr);
+    FileWorldAnalyzer fwa = new FileWorldAnalyzer(fpr, fpr.getResource());
 
-    @ParameterizedTest
+   /* @ParameterizedTest
     @ValueSource(strings = {"important", "pages", "meaning", " "})
     public void substringTest(String substring) {
         assertArrayEquals(new String[] {substring},  fwa.getWordsContainingSubstrings(substring));
+*/
 
-    }
 
 
 }
