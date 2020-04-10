@@ -21,7 +21,16 @@ public class FilePartReader {
 
     }
 
+    public String readLines(String filePath, int fromLine, int toLine) {
+        ArrayList<String> allLines = read(filePath);
+        StringBuilder myLines = new StringBuilder();
 
+        for (int i = fromLine; i <= toLine ; i++) {
+            myLines.append(String.format("%dth line: %s", i, allLines.get(i)));
+        }
+
+        return myLines.toString();
+    }
 
     public ArrayList<String> read(String filePath) {
         try {
