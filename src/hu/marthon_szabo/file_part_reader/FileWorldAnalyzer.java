@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FileWorldAnalyzer {
-    private FilePartReader fpr;
-    private String allLines;
+    FilePartReader fpr;
+    String allLines;
 
     public FileWorldAnalyzer(FilePartReader fpr, String resource) {
         this.fpr = fpr;

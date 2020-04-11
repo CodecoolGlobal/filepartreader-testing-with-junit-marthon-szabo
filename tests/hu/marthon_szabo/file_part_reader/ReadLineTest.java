@@ -13,16 +13,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(Parameterized.class)
 class ReadLineTest {
-    private int fromLine;
-    private int toLine;
-    private String expectedLine;
-    private String fileSource;
-    private FilePartReader fpr;
+    int fromLine;
+    int toLine;
+    String expectedLine;
+    String fileSource;
+    FilePartReader fpr = new FilePartReader();
 
-    @Before
-    public void initialize() {
-        fpr = new FilePartReader();
-    }
+
 
     public ReadLineTest(int fromLine, int toLine, String expectedLine, String fileSource) {
         this.fromLine = fromLine;
